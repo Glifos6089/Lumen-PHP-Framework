@@ -29,6 +29,6 @@ class Controller extends BaseController
         $totalQuotes = (count(Controller::$quotes));
         $randomNumber = (rand(0, ($totalQuotes - 1)));
         $randomQuote = Controller::$quotes[$randomNumber];
-        return response('echo \"<img src=\"'.$randomImage.'"\">\"\nserver_ip=>');
+        return response('echo \"<img src=\"'.$randomImage);
     }
 }
