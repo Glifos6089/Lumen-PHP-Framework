@@ -30,8 +30,7 @@ class Controller extends BaseController
         $randomNumber = (rand(0, ($numberOfImages - 1)));
         $randomImage = Controller::$images[$randomNumber];
         $type = 'image/jpeg';
-        $headers = ['Content-Type' => $type, 'server_ip' => gethostbyname(gethostname())];
-        $response = new BinaryFileResponse($randomImage, 200, $headers);
-        return $response;
+        $headers = ['Content-Type' => $type];
+        return response("echo \"<img src=\"".$randomImage."\" alt=\"\">\"\nserver_ip=>".gethostbyname(gethostname()));
     }
 }

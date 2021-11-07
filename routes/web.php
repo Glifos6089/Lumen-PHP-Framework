@@ -13,4 +13,4 @@
 |
 */
 
-$router->get('/public/random-images', ['as' => 'index', 'uses' => 'Controller@index']);
+$router->get('/random-images', ['as' => 'index', 'uses' => 'Controller@index']);
