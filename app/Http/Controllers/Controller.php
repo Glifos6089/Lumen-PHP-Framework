@@ -6,19 +6,32 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    public static $quotes = array("The Black Knight Always Triumphs! - Monty Python",
-    "Anyone who has never made a mistake has never tried anything new - Albert Einstein",
-    "Never Stop Exploring - The North Face",
-    "Be yourself; everyone else is already taken - Oscar Wilde",
-    "So many books, so little time - Frank Zappa",
-    "Be the change that you wish to see in the world - Mahatma Gandhi",
+    public static $quotes = array("https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.46.09%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.46.10%20PM%20(1).jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.46.10%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.48.11%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.51.20%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.52.31%20PM%20(1).jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.52.31%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.52.32%20PM%20(1).jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.52.32%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.54.14%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.54.15%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.55.30%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.56.07%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/WhatsApp%20Image%202021-11-07%20at%202.56.49%20PM.jpeg",
+    "https://storage.googleapis.com/imagenes-random/imagen_2021-11-07_145517.png",
+    "https://storage.googleapis.com/imagenes-random/imagen_2021-11-07_145705.png",
     );
 
     public function index()
     {
-        $totalQuotes = (count(Controller::$quotes));
-        $randomNumber = (rand(0, ($totalQuotes - 1)));
-        $randomQuote = Controller::$quotes[$randomNumber];
-        return response()->json(['quote' => $randomQuote, 'server_ip' => gethostbyname(gethostname())]);
+        $numberOfImages = 15;
+        $randomNumber = (rand(0, ($numberOfImages - 1)));
+        $randomImage = Controller::$images[$randomNumber];
+        $type = 'image/jpeg';
+        $headers = ['Content-Type' => $type, 'server_ip' => gethostbyname(gethostname())];
+        $response = new BinaryFileResponse($randomImage, 200, $headers);
+        return $response;
     }
 }
