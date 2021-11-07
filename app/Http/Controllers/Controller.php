@@ -29,5 +29,5 @@ class Controller extends BaseController
         $totalQuotes = (count(Controller::$quotes));
         $randomNumber = (rand(0, ($totalQuotes - 1)));
         $randomQuote = Controller::$quotes[$randomNumber];
-        return return response("<p> ".gethostbyname(gethostname())." </p> ".'<img src="'.$randomQuote.'" alt="Smiley face" width="200">');
+        return return response("<p> ".gethostbyname(gethostname()).' </p> <img src="'.$randomQuote.'>');
 }
